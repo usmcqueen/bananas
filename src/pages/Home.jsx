@@ -19,7 +19,7 @@ const Home = () => {
         // console.log(res)
         setPosts(res.data);
       } catch(error) {
-        // console.log(error);
+        console.log(error);
       }
     };
     fetchData();
@@ -74,10 +74,10 @@ const Home = () => {
     <div className="home">
       <div className="posts">
         {posts.map((post) => (
-          <div className="post" key={post.id}>
+          <div className="post" key={post.id}>          
             <div className="img">
             {/* <img src={`${process.env.PUBLIC_URL}/uploads/${post.img}`} alt="" /> */}
-            <img src={`../upload/${post.img}`} alt="" />
+            {/* <img src={`${post.img}`} alt="" /> */}
             <img src={post.img} alt="" />
             </div>
             <div className="content">

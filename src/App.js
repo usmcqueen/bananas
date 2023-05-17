@@ -11,10 +11,8 @@ import BaseballPosts from "./pages/BaseballPosts";
 import FoodPosts from "./pages/FoodPosts";
 import SciencePosts from "./pages/SciencePosts";
 import TechnologyPosts from "./pages/TechnologyPosts";
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
 import "./pages/style.scss";
 // import postRoutes from "./posts.js";
 // import postRoutes from "./routes/posts.js";
@@ -22,7 +20,7 @@ import "./pages/style.scss";
 const Layout = ({ children }) => {
   return (
     <>
-      <Navbar />
+      <Navbar/>
       {children}
       <Footer />
     </>
@@ -34,7 +32,7 @@ function App() {
     <Layout>
       <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/post/:id" element={<Single />} />
+          <Route path="/post/:uid/" element={<Single />} />
           <Route path="/write" element={<Write />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} /> 
@@ -43,7 +41,7 @@ function App() {
           <Route path="/science" element={<SciencePosts />} />  
           <Route path="/disney" element={<DisneyPosts />} />  
           <Route path="/baseball" element={<BaseballPosts />} />  
-          <Route path="/music" element={<MusicPosts />} />  
+          <Route path="/music" element={<MusicPosts />} /> 
       </Routes>
     </Layout>
   );

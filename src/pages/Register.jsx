@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: "",
@@ -11,30 +10,30 @@ const Register = () => {
     password: "",
   });
 
-  const [ error, setError ] = useState(null);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  // console.log(inputs)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(inputs)
     try {
-      await axios.post("http://localhost:8080/api/auth/register", inputs)
+      await axios.post("api/auth/register", inputs)
       navigate("/login");
     } catch (error) {
-      setError(error.response);
+      setError("An error occurred during registration. Please try again later.");
+    }
   }
-}
 
   return (
-    
+
     <div className="auth">
       <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           required
           type="text"
@@ -50,15 +49,16 @@ const Register = () => {
           onChange={handleChange}
         />
         <input
+          required
           type="password"
           placeholder="password"
           name="password"
           onChange={handleChange}
         />
         <button onClick={handleSubmit}>Register</button>
-        {/* {error && <p>{error}</p>} */}
+        {error && <p>{error}</p>}
         <span>
-          Don't have an account? <Link to="/login">Login</Link>
+          Do you have an account? <Link to="/login">Login</Link>
         </span>
       </form>
     </div>
